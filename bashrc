@@ -198,7 +198,7 @@ wocker() {
           dirname=${dirname#*/} && \
           cname=$dirname
           docker cp $(docker ps -l -q):/var/www/wordpress ~/data/${cid} && \
-          mv ~/data/${cid}/wordpress ~/data/${dirname} && \
+          mv ~/data/${cid} ~/data/${dirname} && \
           rm -rf ~/data/${cid} && \
           docker rm -f $(docker ps -l -q) && \
           docker run -d --name $cname -p 80:80 -p 3306:3306 -v ~/data/${dirname}:/var/www/wordpress:rw $image
